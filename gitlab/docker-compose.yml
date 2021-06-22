@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    networks:
+      - gitlab-network
+    hostname: '0.0.0.0:80'
+    environment:
+     GITLAB_OMNIBUS_CONFIG: |
+      external_url 'http://0.0.0.0:80'
+    ports:
+      - 80:80
+      - 443:443
+      - 22:22
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    networks:
+      - gitlab-network
+    links:
+      - gitlab
+    environment:
+      - CI_SERVER_URL=http://gitlab/
+      - REGISTRATION_TOKEN=ALgGdcJxKJ5KfGbW_svc
+
+networks:
+  gitlab-network:

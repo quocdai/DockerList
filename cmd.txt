@@ -1,0 +1,14 @@
+docker-compose up -d
+sudo docker rmi $(docker images -a -q)
+sudo docker kill $(docker ps -q)
+ keytool -list -v -keystore -alias androiddebugkey -storepass android -keypass android
+ sudo docker system prune --all --force --volumes
+ 
+ docker pull jenkins/jenkins:lts
+ 
+ docker run -d -p 49001:8080 -v $PWD/jenkins:/var/jenkins_home -t jenkins/jenkins
+ 
+ 1
+docker run -p 49001:8080 -t jenkins/jenkins
+
+https://github.com/hakdogan/jenkins-pipeline
