@@ -5,10 +5,10 @@ services:
     image: gitlab/gitlab-ce:latest
     networks:
       - gitlab-network
-    hostname: '0.0.0.0:80'
+    hostname: '0.0.0.0:8888'
     environment:
      GITLAB_OMNIBUS_CONFIG: |
-      external_url 'http://0.0.0.0:80'
+      external_url 'http://0.0.0.0:8888'
     ports:
       - 80:80
       - 443:443
